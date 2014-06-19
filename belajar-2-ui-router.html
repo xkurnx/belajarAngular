@@ -3,14 +3,49 @@
   <head>
     <title>AngularJS Routing example</title>
   
-	<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'></script></head>
-	<script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script>
 	
 	var dashboardApp = angular.module('dashboardPerkaraApp',[]); 	
 	dashboardApp.controller("Info",function($scope){
-		$scope.judul = 'Belajar Angular Tahap - 2 UI Router';
+		$scope.judul = 'Belajar Angular Tahap - 2 UI Router dan Template';
 		$scope.namaApp = 'Dashboard Perkara';
 	});
+	var base_url = "http://localhost/belajarAngular/belajar-2-ui-router.html";
+	dashboardApp.controller("menuCtrl",function($scope){
+		$scope.listMenu = [ 
+		{ namaMenu : "Bulan Ini", uri : "#bulan-ini" },
+		{ namaMenu : "Bulan Lalu", uri :  "#bulan-lalu" },
+		{ namaMenu : "Tahun Ini", uri : "#tahun-ini" },
+		{ namaMenu : "Tahun Lalu", uri : "#tahun-lalu" }
+		];
+	});
+	
+	dashboardApp.config(['$routeProvider',
+		  function($routeProvider) {
+			$routeProvider.
+			  when('/bulan-ini', {
+				templateUrl: 'tpl-rekap.html',
+				controller: 'bulanIniCtrl'
+			  }).
+			  when('/bulan-lalu', {
+				templateUrl: 'tpl-rekap.html',
+				controller: 'bulanLaluCtrl'
+			  }).
+			  otherwise({
+				redirectTo: '/AddNewOrder'
+			  });
+		}]);
+
+	dashboardApp.controller("bulanIniCtrl",function($scope){
+			$scope.message = 'Bulan Ini';
+		//	alert(1);
+	});	
+	dashboardApp.controller("bulanLaluCtrl",function($scope){
+			$scope.message = 'Bulan Lalu';
+		//	alert(1);
+	});	
+ 
 	</script>
 	</head>
 	
@@ -19,9 +54,14 @@
 		<h1>{{judul}}</h1>
 		<h3>Nama App : {{namaApp}}</h3>
 	</div>
-	<div ng-controller="">
-		
-	</div>
+	
+	<ul ng-controller="menuCtrl">
+		<li ng-repeat="menu in listMenu" >
+		<a href="{{menu.uri}}">{{menu.namaMenu}}</a>
+		</li>
+	</ul>
+	
+		<div ng-view></div>
 		
 </body>
 </html>
