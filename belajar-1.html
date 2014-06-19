@@ -17,12 +17,15 @@
 	
 </script>
 <body>
-<div ng-controller="ContohCtrl">
+<!--------------------------------->
 <h1>{{judul}}</h1>
 <h4>Model dan View </h4>
 Ulangi : <input ng-model="keyword"><br />
 {{keyword}}
 <br />
+
+<!--------------------------------->
+<div ng-controller="ContohCtrl">
 <h4>Array dan Filter</h4>
 Cari/Filter :
 <input ng-model="pencarian">
@@ -30,7 +33,7 @@ Cari/Filter :
 <li ng-repeat="saudara in ListSaudara | filter:pencarian">
 {{saudara.nama}} tinggal di {{saudara.alamat}}
 </li>
-
+</div>
 
 </body>
 </html>
