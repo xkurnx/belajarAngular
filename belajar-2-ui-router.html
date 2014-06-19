@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AngularJS Routing example</title>
+  
+	<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'></script></head>
+	<script>
+	
+	var dashboardApp = angular.module('dashboardPerkaraApp',[]); 	
+	dashboardApp.controller("Info",function($scope){
+		$scope.judul = 'Belajar Angular Tahap - 2 UI Router';
+		$scope.namaApp = 'Dashboard Perkara';
+	});
+	</script>
+	</head>
+	
+<body ng-app="dashboardPerkaraApp">
+	<div ng-controller="Info">
+		<h1>{{judul}}</h1>
+		<h3>Nama App : {{namaApp}}</h3>
+	</div>
+	<div ng-controller="">
+		
+	</div>
+		
+</body>
+</html>
