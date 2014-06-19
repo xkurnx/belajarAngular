@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<title>Belajar Angular JS</title>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'></script></head>
+<script>
+	function ContohCtrl($scope){
+	$scope.ListSaudara = [ 
+		{ nama : "Kurniawan", alamat : "Kisaran" },
+		{ nama : "Fitri", alamat : "Kisaran" },
+		{ nama : "Jayus Niati", alamat : "Ngaso" },
+		{ nama : "Afifah", alamat : "Rampah" }
+		];
+		
+		$scope.judul = 'Belajar Angular Tahap - 1';
+	}
+	
+</script>
+<body>
+<div ng-controller="ContohCtrl">
+<h1>{{judul}}</h1>
+<h4>Model dan View </h4>
+Ulangi : <input ng-model="keyword"><br />
+{{keyword}}
+<br />
+<h4>Array dan Filter</h4>
+Cari/Filter :
+<input ng-model="pencarian">
+<ul>
+<li ng-repeat="saudara in ListSaudara | filter:pencarian">
+{{saudara.nama}} tinggal di {{saudara.alamat}}
+</li>
+
+
+</body>
+</html>
