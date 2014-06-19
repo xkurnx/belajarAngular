@@ -14,8 +14,8 @@
 	var base_url = "http://localhost/belajarAngular/belajar-2-ui-router.html";
 	dashboardApp.controller("menuCtrl",function($scope){
 		$scope.listMenu = [ 
-		{ namaMenu : "Bulan Ini", uri : "#bulan-ini" },
-		{ namaMenu : "Bulan Lalu", uri :  "#bulan-lalu" },
+		{ namaMenu : "Bulan Ini", uri : "#bulan-ini/" },
+		{ namaMenu : "Bulan Lalu", uri :  "#bulan-lalu/perkara_putus" },
 		{ namaMenu : "Tahun Ini", uri : "#tahun-ini" },
 		{ namaMenu : "Tahun Lalu", uri : "#tahun-lalu" }
 		];
@@ -28,7 +28,7 @@
 				templateUrl: 'tpl-rekap.html',
 				controller: 'bulanIniCtrl'
 			  }).
-			  when('/bulan-lalu', {
+			  when('/bulan-lalu/:jenis_data', {
 				templateUrl: 'tpl-rekap.html',
 				controller: 'bulanLaluCtrl'
 			  }).
@@ -41,8 +41,8 @@
 			$scope.message = 'Bulan Ini';
 		//	alert(1);
 	});	
-	dashboardApp.controller("bulanLaluCtrl",function($scope){
-			$scope.message = 'Bulan Lalu';
+	dashboardApp.controller("bulanLaluCtrl",function($scope,$routeParams){
+			$scope.message = 'Laporan '+$routeParams.jenis_data+' Bulan Lalu';
 		//	alert(1);
 	});	
  
